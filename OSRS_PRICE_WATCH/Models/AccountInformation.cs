@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace OSRS_PRICE_WATCH.Models
 {
+    //Account information class. This class stores information used
+    //to retrieve info from the SQL Database. It also contains methods
+    //that lets the user interact with the website by retrieving information
+    //from the API.
     public class AccountInformation
     {
         public string UserID { get; set; }

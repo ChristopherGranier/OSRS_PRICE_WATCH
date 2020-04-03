@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace OSRS_PRICE_WATCH.Models
 {
+    //Cart Class. This class contains information about the user's
+    //cart and includes methods to edit the cart or purchase items
     public class Cart
     {
         public int TotalPrice { get; set; }

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace OSRS_PRICE_WATCH.Models
 {
+    //Item Class. This class will store the information gathered from the API
+    //and format it according to the user's selection
     public class Items
     {
         public string ItemID { get; set; }
