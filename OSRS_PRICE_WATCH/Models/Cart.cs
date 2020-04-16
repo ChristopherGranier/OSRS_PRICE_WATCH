@@ -9,6 +9,7 @@ namespace OSRS_PRICE_WATCH.Models
     //cart and includes methods to edit the cart or purchase items
     public class Cart
     {
+        public List<Items> items = new List<Items>();
         public int TotalPrice { get; set; }
         public int NumItems { get; set; }
 
@@ -23,6 +24,11 @@ namespace OSRS_PRICE_WATCH.Models
         }
 
         public static void Purchase()
+        {
+
+        }
+
+        public int GetTotal()
         {
 
         }
