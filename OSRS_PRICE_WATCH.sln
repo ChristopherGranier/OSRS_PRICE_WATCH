@@ -5,9 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSRS_PRICE_WATCH", "OSRS_PRICE_WATCH\OSRS_PRICE_WATCH.csproj", "{6B8BFB9A-D71B-4867-A5AF-EC8E8E04964D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSBuddy", "..\..\..\Desktop\OSBuddy-master\OSBuddy\OSBuddy.csproj", "{3C656D82-C109-488B-8947-06963DE490BA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OsrsBoxImplementation", "OsrsBoxImplementation\OsrsBoxImplementation.csproj", "{A990646F-CF4F-42FA-8179-71124DC8B22B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OsrsBoxImplementation", "OsrsBoxImplementation\OsrsBoxImplementation.csproj", "{A990646F-CF4F-42FA-8179-71124DC8B22B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		{6B8BFB9A-D71B-4867-A5AF-EC8E8E04964D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B8BFB9A-D71B-4867-A5AF-EC8E8E04964D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B8BFB9A-D71B-4867-A5AF-EC8E8E04964D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C656D82-C109-488B-8947-06963DE490BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C656D82-C109-488B-8947-06963DE490BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C656D82-C109-488B-8947-06963DE490BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C656D82-C109-488B-8947-06963DE490BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A990646F-CF4F-42FA-8179-71124DC8B22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A990646F-CF4F-42FA-8179-71124DC8B22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A990646F-CF4F-42FA-8179-71124DC8B22B}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -16,8 +16,4 @@
     <Folder Include="Views\Stocks\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Desktop\OSBuddy-master\OSBuddy\OSBuddy.csproj" />
-  </ItemGroup>
-
 </Project>

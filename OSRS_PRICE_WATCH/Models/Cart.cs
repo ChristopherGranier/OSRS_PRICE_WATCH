@@ -28,7 +28,7 @@ namespace OSRS_PRICE_WATCH.Models
 
         }
 
-        public int GetTotal()
+        public static void GetTotal()
         {
 
         }

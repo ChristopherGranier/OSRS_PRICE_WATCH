@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace OsrsBoxImplementation
+namespace ConsoleApp7
 {
+
+
 
     public class Rootobject
     {
@@ -16,8 +22,6 @@ namespace OsrsBoxImplementation
     {
         public Parent parent { get; set; }
         public Self self { get; set; }
-        public Next next { get; set; }
-        public Last last { get; set; }
     }
 
     public class Parent
@@ -27,18 +31,6 @@ namespace OsrsBoxImplementation
     }
 
     public class Self
-    {
-        public string title { get; set; }
-        public string href { get; set; }
-    }
-
-    public class Next
-    {
-        public string title { get; set; }
-        public string href { get; set; }
-    }
-
-    public class Last
     {
         public string title { get; set; }
         public string href { get; set; }
@@ -64,18 +56,18 @@ namespace OsrsBoxImplementation
         public object stacked { get; set; }
         public bool noted { get; set; }
         public bool noteable { get; set; }
-        public int? linked_id_item { get; set; }
-        public int? linked_id_noted { get; set; }
-        public int? linked_id_placeholder { get; set; }
+        public object linked_id_item { get; set; }
+        public int linked_id_noted { get; set; }
+        public int linked_id_placeholder { get; set; }
         public bool placeholder { get; set; }
         public bool equipable { get; set; }
         public bool equipable_by_player { get; set; }
         public bool equipable_weapon { get; set; }
         public int cost { get; set; }
-        public int? lowalch { get; set; }
-        public int? highalch { get; set; }
+        public int lowalch { get; set; }
+        public int highalch { get; set; }
         public float weight { get; set; }
-        public int? buy_limit { get; set; }
+        public int buy_limit { get; set; }
         public bool quest_item { get; set; }
         public string release_date { get; set; }
         public bool duplicate { get; set; }
@@ -83,12 +75,53 @@ namespace OsrsBoxImplementation
         public string icon { get; set; }
         public string wiki_name { get; set; }
         public string wiki_url { get; set; }
-        public object equipment { get; set; }
-        public object weapon { get; set; }
+        public Equipment equipment { get; set; }
+        public Weapon weapon { get; set; }
         public string _created { get; set; }
         public string _updated { get; set; }
         public string _etag { get; set; }
         public _Links1 _links { get; set; }
+    }
+
+    public class Equipment
+    {
+        public int attack_stab { get; set; }
+        public int attack_slash { get; set; }
+        public int attack_crush { get; set; }
+        public int attack_magic { get; set; }
+        public int attack_ranged { get; set; }
+        public int defence_stab { get; set; }
+        public int defence_slash { get; set; }
+        public int defence_crush { get; set; }
+        public int defence_magic { get; set; }
+        public int defence_ranged { get; set; }
+        public int melee_strength { get; set; }
+        public int ranged_strength { get; set; }
+        public int magic_damage { get; set; }
+        public int prayer { get; set; }
+        public string slot { get; set; }
+        public Requirements requirements { get; set; }
+    }
+
+    public class Requirements
+    {
+        public int attack { get; set; }
+    }
+
+    public class Weapon
+    {
+        public int attack_speed { get; set; }
+        public string weapon_type { get; set; }
+        public Stance[] stances { get; set; }
+    }
+
+    public class Stance
+    {
+        public string combat_style { get; set; }
+        public string attack_type { get; set; }
+        public string attack_style { get; set; }
+        public string experience { get; set; }
+        public object boosts { get; set; }
     }
 
     public class _Links1
@@ -103,23 +136,26 @@ namespace OsrsBoxImplementation
     }
 
 
-    public class Items
+
+
+    public class Test
     {
-        private static _Items _download_serialized_json_data<_Items>(string url) where _Items : new()
+        public static void Download_serialized_json_data(string url)
         {
-            using (var w = new WebClient())
+            using (var webClient = new WebClient())
             {
-                var json_data = string.Empty;
-                // attempt to download JSON data as a string
-                try
+                string json_data = webClient.DownloadString(url);
+                Rootobject test = new Rootobject();
+                test = JsonConvert.DeserializeObject<Rootobject>(json_data);
+
+                foreach (_Items i in test._items)
                 {
-                    json_data = w.DownloadString(url);
+
                 }
-                catch (Exception) { }
-                // if string with JSON data is not empty, deserialize it to class and return its instance 
-                return !string.IsNullOrEmpty(json_data) ? JsonConvert.DeserializeObject<_Items>(json_data) : new _Items();
+                
+
             }
         }
     }
-    
+
 }
