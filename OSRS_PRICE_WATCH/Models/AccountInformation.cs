@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using OSBuddy.RuneScape.OldSchool;
 
 namespace OSRS_PRICE_WATCH.Models
 {
@@ -35,11 +34,6 @@ namespace OSRS_PRICE_WATCH.Models
 
         public static void Test()
         {
-            var factory = new ItemCatalogFactory();
-            var catalog = factory.GetItemCatalog();
-            var results = catalog.Search("Abbysal Whip");
-
-
         }
 
     }

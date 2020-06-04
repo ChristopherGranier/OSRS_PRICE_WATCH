@@ -16,4 +16,8 @@
     <Folder Include="Views\Stocks\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OsrsBoxImplementation\OsrsBoxImplementation.csproj" />
+  </ItemGroup>
+
 </Project>

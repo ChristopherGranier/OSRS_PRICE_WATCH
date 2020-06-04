@@ -140,19 +140,20 @@ namespace ConsoleApp7
 
     public class Test
     {
-        public static void Download_serialized_json_data(string url)
+        public static _Items Download_serialized_json_data(string url)
         {
             using (var webClient = new WebClient())
             {
                 string json_data = webClient.DownloadString(url);
                 Rootobject test = new Rootobject();
                 test = JsonConvert.DeserializeObject<Rootobject>(json_data);
-
+                _Items id = new _Items();
                 foreach (_Items i in test._items)
                 {
-
+                    id = i;
                 }
-                
+
+                return id;
 
             }
         }

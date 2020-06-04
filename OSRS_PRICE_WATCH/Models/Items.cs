@@ -10,10 +10,12 @@ namespace OSRS_PRICE_WATCH.Models
     public class Items
     {
         public string ItemID { get; set; }
+        public string Name { get; set; }
         public int Price { get; set; }
         public int HighAlchPrice { get; set; }
         public int ThirtyDay { get; set; }
         public int SevenDay { get; set; }
+
 
         public static void FormatCategories()
         {
