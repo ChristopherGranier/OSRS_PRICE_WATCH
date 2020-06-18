@@ -1,0 +1,20 @@
+﻿@model _Items[]
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>WeaponCategories</title>
+</head>
+<body>
+    @foreach(var weapon in Model)
+    {
+        <p>@weapon.name</p>
+        <p>@weapon.cost</p>
+    }
+</body>
+</html>

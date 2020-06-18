@@ -1,0 +1,20 @@
+﻿@model _Items[]
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>WeaponCategories</title>
+</head>
+<body>
+    @foreach (var cosmetics in Model)
+    {
+        <p>@cosmetics.name</p>
+        <p>@cosmetics.cost</p>
+    }
+</body>
+</html>

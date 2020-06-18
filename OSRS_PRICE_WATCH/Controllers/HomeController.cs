@@ -27,10 +27,10 @@ namespace OSRS_PRICE_WATCH.Controllers
         public ActionResult Index()
         {
             var url = "https://api.osrsbox.com/items?where={ \"name\": \"Abyssal whip\", \"duplicate\": false }";
-            List<_Items> test1 = new List<_Items>();
-            test1.Add(Test.Download_serialized_json_data(url));
-            url = "https://api.osrsbox.com/items?where={ \"name\": \"Twisted bow\", \"duplicate\": false }";
-            test1.Add(Test.Download_serialized_json_data(url));
+            _Items test1 = new _Items();
+            test1 = (Test.Download_serialized_json_data(url));
+            //url = "https://api.osrsbox.com/items?where={ \"name\": \"Twisted bow\", \"duplicate\": false }";
+            //test1.Add(Test.Download_serialized_json_data(url));
             return View(test1);
         }
 
@@ -55,11 +55,8 @@ namespace OSRS_PRICE_WATCH.Controllers
         {
             var url = "https://api.osrsbox.com/items?where={ \"name\": \"" + item.Name + "\", \"duplicate\": false }";
             _Items test1 = new _Items();
-            Items test = new Items();
             test1 = Test.Download_serialized_json_data(url);
-            test.Name = test1.name;
-
-            return View(test);
+            return View(test1);
         }
 
         //public IActionResult Search(Items item)
@@ -68,9 +65,12 @@ namespace OSRS_PRICE_WATCH.Controllers
         //    _Items test1 = new _Items();
         //    List<Items> test = new List<Items>(10);
         //    test1 = Test.Download_serialized_json_data(url);
-        //    test.Name = test1.name;
+        //    test.
 
         //    return View(test);
         //}
+
+
+
     }
 }

@@ -13,7 +13,7 @@ namespace OSRS_PRICE_WATCH.Models
     public class Items
     {
         //public string ItemID { get; set; }
-        [Required(ErrorMessage ="No")]
+        [Required(ErrorMessage ="Enter a valid item name")]
         public string Name { get; set; }
        //public int Price { get; set; }
         //public int HighAlchPrice { get; set; }

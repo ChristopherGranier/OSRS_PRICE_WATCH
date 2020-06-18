@@ -1,0 +1,20 @@
+﻿@model _Items[]
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>WeaponCategories</title>
+</head>
+<body>
+    @foreach (var Mining in Model)
+    {
+        <p>@Mining.name</p>
+        <p>@Mining.cost</p>
+    }
+</body>
+</html>
