@@ -23,14 +23,24 @@ namespace OSRS_PRICE_WATCH.Controllers
         //    return View(test);
         //}
 
+        public ViewResult About() => View();
+        public ViewResult Favorites() => View();
 
+        public ActionResult Stocks()
+        {
+            var url = "https://api.osrsbox.com/items?where={ \"name\": \"Abyssal whip\", \"duplicate\": false }";
+            _Items test1 = new _Items();
+            test1 = (Test.Download_serialized_json_data(url));
+            return View(test1);
+        }
+
+        //TODO: Make this action return an array of _Items 
+        //      for the featured items on the home page
         public ActionResult Index()
         {
             var url = "https://api.osrsbox.com/items?where={ \"name\": \"Abyssal whip\", \"duplicate\": false }";
             _Items test1 = new _Items();
             test1 = (Test.Download_serialized_json_data(url));
-            //url = "https://api.osrsbox.com/items?where={ \"name\": \"Twisted bow\", \"duplicate\": false }";
-            //test1.Add(Test.Download_serialized_json_data(url));
             return View(test1);
         }
 

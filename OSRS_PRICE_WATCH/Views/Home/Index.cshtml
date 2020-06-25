@@ -1,35 +1,69 @@
 ﻿@model ConsoleApp7._Items
-@{
-    Layout = null;
-}
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" asp-href-include="/lib/bootstrap/css/**/*.min.css" />
     <title>Index</title>
 </head>
 <body>
-        <h3>@Model.name</h3>
-        <p>Price = @Model.cost</p>
-
-        <form asp-action="Index" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label>Name</label><input asp-for="name" class="form-control" />
+    <div class="container-fluid ">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-6">
+                <h2 class="text-light text-center">Recent Game Updates</h2>
+                <div class="card align-content-center" style="width: 18rem;">
+                    <img class="card-img-top" src="~/lib/Pictures/Old_School_Runescape_Logo.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Cannot access this blog post on a school network</p>
+                        <a href="#" class="btn btn-primary">Read More...</a>
+                    </div>
+                </div>
+                <br />
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/lib/Pictures/Old_School_Runescape_Logo.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Cannot access this blog post on a school network</p>
+                        <a href="#" class="btn btn-primary">Read More...</a>
+                    </div>
+                </div>
             </div>
-            <div class="text-center">
-                <input class="btn btn-primary" type="submit" value="Submit" />
-            </div>
+            <div class="col-md-6 col-sm-6 text-light">
+                <h2 class="text-light text-center">Featured Items</h2>
 
-            <a class="btn btn-primary" href="/categories/weapons">Weapons</a>
-            <a class="btn btn-primary" href="/categories/armor">Food</a>
-            <a class="btn btn-primary" href="/categories/mining">Mining</a>
-            <a class="btn btn-primary" href="/categories/woodcutting">Woodcutting</a>
-            <a class="btn btn-primary" href="/categories/runes">Runes</a>
-            <a class="btn btn-primary" href="/categories/potions">Potions</a>
-        </form>
+                <div class="card text-dark" style="width:18rem;">
+                    <img class="card-img-top" src="~/lib/Pictures/whip1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Abyssal Whip</h5>
+                        <p class="card-text">Price: 2,873,797 coins</p>
+                        <a href="#" class="btn btn-primary">More Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+
+
+
+
+@*<div class="container">
+        <div class="card-columns d-flex justify-content-center">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">This is a longer card with shorter text.</p>
+                </div>
+            </div>
+        </div>
+    </div>*@
