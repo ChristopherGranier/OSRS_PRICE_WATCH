@@ -33,6 +33,33 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\lib\assets\bootstrap\css\bootstrap.min.css" />
+    <None Include="wwwroot\lib\assets\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\assets\css\Article-List.css" />
+    <None Include="wwwroot\lib\assets\css\smoothproducts.css" />
+    <None Include="wwwroot\lib\assets\fonts\Simple-Line-Icons.eot" />
+    <None Include="wwwroot\lib\assets\fonts\simple-line-icons.min.css" />
+    <None Include="wwwroot\lib\assets\fonts\Simple-Line-Icons.svg" />
+    <None Include="wwwroot\lib\assets\fonts\Simple-Line-Icons.ttf" />
+    <None Include="wwwroot\lib\assets\fonts\Simple-Line-Icons.woff" />
+    <None Include="wwwroot\lib\assets\fonts\Simple-Line-Icons.woff2" />
+    <None Include="wwwroot\lib\assets\img\avatars\avatar1.jpg" />
+    <None Include="wwwroot\lib\assets\img\avatars\avatar2.jpg" />
+    <None Include="wwwroot\lib\assets\img\avatars\avatar3.jpg" />
+    <None Include="wwwroot\lib\assets\img\building.jpg" />
+    <None Include="wwwroot\lib\assets\img\desk.jpg" />
+    <None Include="wwwroot\lib\assets\img\loft.jpg" />
+    <None Include="wwwroot\lib\assets\img\scenery\image1.jpg" />
+    <None Include="wwwroot\lib\assets\img\scenery\image4.jpg" />
+    <None Include="wwwroot\lib\assets\img\scenery\image5.jpg" />
+    <None Include="wwwroot\lib\assets\img\scenery\image6.jpg" />
+    <None Include="wwwroot\lib\assets\img\tech\image4.jpg" />
+    <None Include="wwwroot\lib\assets\js\jquery.min.js" />
+    <None Include="wwwroot\lib\assets\js\smoothproducts.min.js" />
+    <None Include="wwwroot\lib\assets\js\theme.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OsrsBoxImplementation\OsrsBoxImplementation.csproj" />
   </ItemGroup>
 

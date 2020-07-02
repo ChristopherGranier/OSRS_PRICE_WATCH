@@ -1,69 +1,104 @@
 ﻿@model ConsoleApp7._Items
 
 <!DOCTYPE html>
-
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div class="container-fluid ">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-sm-6">
-                <h2 class="text-light text-center">Recent Game Updates</h2>
-                <div class="card align-content-center" style="width: 18rem;">
-                    <img class="card-img-top" src="~/lib/Pictures/Old_School_Runescape_Logo.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Cannot access this blog post on a school network</p>
-                        <a href="#" class="btn btn-primary">Read More...</a>
-                    </div>
-                </div>
-                <br />
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="~/lib/Pictures/Old_School_Runescape_Logo.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Cannot access this blog post on a school network</p>
-                        <a href="#" class="btn btn-primary">Read More...</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 text-light">
-                <h2 class="text-light text-center">Featured Items</h2>
 
-                <div class="card text-dark" style="width:18rem;">
-                    <img class="card-img-top" src="~/lib/Pictures/whip1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Abyssal Whip</h5>
-                        <p class="card-text">Price: 2,873,797 coins</p>
-                        <a href="#" class="btn btn-primary">More Details</a>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="~/lib/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="~/lib/assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="~/lib/assets/css/Article-List.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="~/lib/assets/css/smoothproducts.css">
+</head>
+
+<body>
+    <section class="clean-block about-us">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Recent Blog Posts</h2>
+                <p>Check out&nbsp;<br><a href="https://oldschool.runescape.com/">https://oldschool.runescape.com</a> for more information.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card clean-card text-center">
+                        <img class="card-img-top w-100 d-block" src="~/lib/Pictures/Old_School_Runescape_Logo.png" />
+                        <div class="card-body info">
+                            <h4 class="card-title">Blog Post Title</h4>
+                            <p class="card-text">I do not have access to blog posts on a school network</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card clean-card text-center">
+                        <img class="card-img-top w-100 d-block" src="~/lib/Pictures/Old_School_Runescape_Logo.png">
+                        <div class="card-body info">
+                            <h4 class="card-title">Blog Post Title</h4>
+                            <p class="card-text">I do not have access to blog posts on a school network</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card clean-card text-center">
+                        <img class="card-img-top w-100 d-block" src="~/lib/Pictures/Old_School_Runescape_Logo.png">
+                        <div class="card-body info">
+                            <h4 class="card-title">Blog Post Title</h4>
+                            <p class="card-text">I do not have access to blog posts on a school network</p>
+                            <div class="icons"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Featured Items</h2>
+                <p>The top 3 items based on their weekly price increase!</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card clean-card text-center">
+                        <img class="card-img-top w-100 d-block" src="~/lib/Pictures/whip.png">
+                        <div class="card-body info">
+                            <h4 class="card-title">@Model.wiki_name</h4>
+                            <p class="card-text">Price: @Model.cost</p>
+                            <div class="icons"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card clean-card text-center">
+                        <img class="card-img-top w-100 d-block" src="~/lib/Pictures/whip.png">
+                        <div class="card-body info">
+                            <h4 class="card-title">@Model.wiki_name</h4>
+                            <p class="card-text">Fill in with other items when on home network</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card clean-card text-center">
+                        <img class="card-img-top w-100 d-block" src="~/lib/Pictures/whip.png">
+                        <div class="card-body info">
+                            <h4 class="card-title">Blog Post Title</h4>
+                            <p class="card-text">Fill in with other items when on home network</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="clean-block about-us"></section>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="/smoothproducts.min.js"></script>
+    <script src="/theme.js"></script>
+    <script id="bs-live-reload" data-sseport="55481" data-lastchange="1593644665549" src="/js/livereload.js"></script>
 </body>
+
 </html>
 
 
-
-
-
-@*<div class="container">
-        <div class="card-columns d-flex justify-content-center">
-            <div class="card">
-                <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">This is a longer card with shorter text.</p>
-                </div>
-            </div>
-        </div>
-    </div>*@
