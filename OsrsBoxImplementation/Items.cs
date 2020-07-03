@@ -6,9 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace ConsoleApp7
+namespace OsrsBoxImplementation
 {
-
+    //This class is the implementation of the OsrsBox API
+    //The method DownloadedItem() will navigate to a specified url
+    //and download / deseralize a JSON file and import it into the 
+    //respective classes.
 
 
     public class Rootobject
@@ -138,17 +141,17 @@ namespace ConsoleApp7
 
 
 
-    public class Test
+    public class DownloadedItem
     {
         public static _Items Download_serialized_json_data(string url)
         {
             using (var webClient = new WebClient())
             {
                 string json_data = webClient.DownloadString(url);
-                Rootobject test = new Rootobject();
-                test = JsonConvert.DeserializeObject<Rootobject>(json_data);
+                Rootobject obj = new Rootobject();
+                obj = JsonConvert.DeserializeObject<Rootobject>(json_data);
                 _Items id = new _Items();
-                foreach (_Items i in test._items)
+                foreach (_Items i in obj._items)
                 {
                     id = i;
                 }

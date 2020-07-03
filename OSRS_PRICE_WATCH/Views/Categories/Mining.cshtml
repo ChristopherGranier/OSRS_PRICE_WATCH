@@ -1,7 +1,5 @@
 ﻿@model _Items[]
-@{
-    Layout = null;
-}
+
 
 <!DOCTYPE html>
 
@@ -11,10 +9,32 @@
     <title>WeaponCategories</title>
 </head>
 <body>
-    @foreach (var Mining in Model)
-    {
-        <p>@Mining.name</p>
-        <p>@Mining.cost</p>
-    }
+    <br /><br /><br />
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Item Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">High Alch</th>
+                <th scope="col">Low Alch</th>
+                <th scope="col">Wiki Link</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ores in Model)
+            {
+                <tr>
+                    <td>@ores.wiki_name</td>
+                    <td>@ores.cost</td>
+                    <td>@ores.highalch</td>
+                    <td>@ores.lowalch</td>
+                    <td><a class="btn btn-outline-primary" href="@ores.wiki_url">Wiki</a></td>
+                    <td><a class="btn btn-primary">View More</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </body>
 </html>

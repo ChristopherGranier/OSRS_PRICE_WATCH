@@ -1,7 +1,5 @@
 ﻿@model _Items[]
-@{
-    Layout = null;
-}
+
 
 <!DOCTYPE html>
 
@@ -11,10 +9,32 @@
     <title>WeaponCategories</title>
 </head>
 <body>
-    @foreach (var woodcutting in Model)
-    {
-        <p>@woodcutting.name</p>
-        <p>@woodcutting.cost</p>
-    }
+    <br /><br /><br />
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Item Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">High Alch</th>
+                <th scope="col">Low Alch</th>
+                <th scope="col">Wiki Link</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var logs in Model)
+            {
+                <tr>
+                    <td>@logs.wiki_name</td>
+                    <td>@logs.cost</td>
+                    <td>@logs.highalch</td>
+                    <td>@logs.lowalch</td>
+                    <td><a class="btn btn-outline-primary" href="@logs.wiki_url">Wiki</a></td>
+                    <td><a class="btn btn-primary">View More</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </body>
 </html>

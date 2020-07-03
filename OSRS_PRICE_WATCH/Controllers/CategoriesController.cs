@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ConsoleApp7;
 using Microsoft.AspNetCore.Mvc;
+using OsrsBoxImplementation;
 
 namespace OSRS_PRICE_WATCH.Controllers
 {
+    //This controller is specifically to return a view 
+    //which displays a set # of items in a specific category
+    //eg. weapons
     public class CategoriesController : Controller
     {
         public ViewResult Weapons()
@@ -26,7 +29,7 @@ namespace OSRS_PRICE_WATCH.Controllers
             for (int i = 0; i < Weapons.Count(); i++)
             {
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Weapons[i] + "\", \"duplicate\": false }";
-                DesWeapons[i] = Test.Download_serialized_json_data(url);
+                DesWeapons[i] = DownloadedItem.Download_serialized_json_data(url);
             }
             return View(DesWeapons);
         }
@@ -48,7 +51,7 @@ namespace OSRS_PRICE_WATCH.Controllers
             for (int i = 0; i < Food.Count(); i++)
             {
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Food[i] + "\", \"duplicate\": false }";
-                DesFood[i] = Test.Download_serialized_json_data(url);
+                DesFood[i] = DownloadedItem.Download_serialized_json_data(url);
             }
             return View(DesFood);
         }
@@ -75,7 +78,7 @@ namespace OSRS_PRICE_WATCH.Controllers
             for (int i = 0; i < Armor.Count(); i++)
             {
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Armor[i] + "\", \"duplicate\": false }";
-                DesArmor[i] = Test.Download_serialized_json_data(url);
+                DesArmor[i] = DownloadedItem.Download_serialized_json_data(url);
             }
             return View(DesArmor);
         }
@@ -101,7 +104,7 @@ namespace OSRS_PRICE_WATCH.Controllers
             for (int i = 0; i < Potions.Count(); i++)
             {
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Potions[i] + "\", \"duplicate\": false }";
-                DesPotions[i] = Test.Download_serialized_json_data(url);
+                DesPotions[i] = DownloadedItem.Download_serialized_json_data(url);
             }
             return View(DesPotions);
         }
@@ -126,7 +129,7 @@ namespace OSRS_PRICE_WATCH.Controllers
             for (int i = 0; i < Woodcutting.Count(); i++)
             {
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Woodcutting[i] + "\", \"duplicate\": false }";
-                DesWoodcutting[i] = Test.Download_serialized_json_data(url);
+                DesWoodcutting[i] = DownloadedItem.Download_serialized_json_data(url);
             }
             return View(DesWoodcutting);
         }
@@ -151,40 +154,9 @@ namespace OSRS_PRICE_WATCH.Controllers
             for (int i = 0; i < Mining.Count(); i++)
             {
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Mining[i] + "\", \"duplicate\": false }";
-                DesMining[i] = Test.Download_serialized_json_data(url);
+                DesMining[i] = DownloadedItem.Download_serialized_json_data(url);
             }
             return View(DesMining);
-        }
-
-        public ViewResult Runes()
-        {
-            var url = string.Empty;
-
-            List<string> Runes = new List<string>()
-            {
-                "Air rune",
-                "Mind rune",
-                "Water rune",
-                "Earth rune",
-                "Fire rune",
-                "Body rune",
-                "Cosmic rune",
-                "Chaos rune",
-                "Nature rune",
-                "Law rune",
-                "Death rune",
-                "Astral rune",
-                "Blood rune",
-                "Soul rune",
-                "Wrath rune"
-            };
-            _Items[] DesRunes = new _Items[Runes.Count];
-            for (int i = 0; i < Runes.Count(); i++)
-            {
-                url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Runes[i] + "\", \"duplicate\": false }";
-                DesRunes[i] = Test.Download_serialized_json_data(url);
-            }
-            return View(DesRunes);
         }
     }
 }
