@@ -60,7 +60,7 @@ namespace OsrsBoxImplementation
         public bool noted { get; set; }
         public bool noteable { get; set; }
         public object linked_id_item { get; set; }
-        public int linked_id_noted { get; set; }
+        public int? linked_id_noted { get; set; }
         public int linked_id_placeholder { get; set; }
         public bool placeholder { get; set; }
         public bool equipable { get; set; }

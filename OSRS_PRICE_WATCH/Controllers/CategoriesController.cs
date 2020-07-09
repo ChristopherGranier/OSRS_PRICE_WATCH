@@ -12,6 +12,15 @@ namespace OSRS_PRICE_WATCH.Controllers
     //eg. weapons
     public class CategoriesController : Controller
     {
+        /*
+         * Populates an instance of the _Items[] class
+         * with predefined items to be gathered from the api 
+         * 
+         * Every action in this controller uses the same logic
+         * 
+         * 
+         * @returns: _Items[] Des Weapons, data gathered from API
+         */
         public ViewResult Weapons()
         {
             var url = string.Empty;

@@ -1,4 +1,4 @@
-﻿@model _Items
+﻿@model RootobjectOsrsGe[]
 
 <!DOCTYPE html>
 <html>
@@ -64,34 +64,19 @@
                 <p>The top 3 items based on their weekly price increase!</p>
             </div>
             <div class="row justify-content-center">
+                @foreach (var item in Model)
+                {
                 <div class="col-sm-6 col-lg-4">
                     <div class="card clean-card text-center">
-                        <img class="card-img-top w-100 d-block mx-auto" src="~/lib/Pictures/abbywhip.png" style="max-height:40%; max-width:40%;">
+                        <img class="card-img-top w-100 d-block mx-auto" src="@item.item.icon_large" style="max-height:40%; max-width:40%;">
                         <div class="card-body info">
-                            <h4 class="card-title">@Model.wiki_name</h4>
-                            <p class="card-text">Price: @Model.cost</p>
+                            <h4 class="card-title">@item.item.name</h4>
+                            <p class="card-text">Price: @item.item.current.price</p>
                             <div class="icons"></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card clean-card text-center">
-                        <img class="card-img-top w-100 d-block mx-auto" src="~/lib/Pictures/emaul.png" style="max-height:40%; max-width:40%;">
-                        <div class="card-body info">
-                            <h4 class="card-title">@Model.wiki_name</h4>
-                            <p class="card-text">Fill in with other items when on home network</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card clean-card text-center">
-                        <img class="card-img-top w-100 d-block mx-auto" src="~/lib/Pictures/twistedbow.png" style="max-height:40%; max-width:40%;">
-                        <div class="card-body info">
-                            <h4 class="card-title">Blog Post Title</h4>
-                            <p class="card-text">Fill in with other items when on home network</p>
-                        </div>
-                    </div>
-                </div>
+                }  
             </div>
         </div>
     </section>
