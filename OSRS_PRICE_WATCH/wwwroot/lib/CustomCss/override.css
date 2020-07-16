@@ -10,5 +10,13 @@
     background: #707070 !important;
 }
 .table-secondary {
-    background: #c7c7c7 !important;
+    background: #007bff !important;
+}
+
+.table .thead-dark th {
+    background-color: #007bff !important;
+}
+
+.border-info{
+    border-color: #376282 !important;
 }

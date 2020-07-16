@@ -7,6 +7,12 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Search</title>
+    <link rel="stylesheet" href="~/lib/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="~/lib/assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="~/lib/assets/css/Article-List.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="~/lib/assets/css/smoothproducts.css">
 </head>
 <body>
         <br />
@@ -17,16 +23,16 @@
                 <div class="col-md">
                     <br />
                     <div class="card clean-card text-center">
-                        <div class="card-body bg-third">
+                        <div class="card-body">
                             <h1 class="card-title">@Model.item.name.ToUpper()</h1>
                         </div>
                     </div>
                 </div>
-                <div class="col-md">
+                <div class="col-md border-dark">
                     <form asp-action="SingleItem" method="post">
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="form-group text-center">
-                            <label class="text-white">Search for an item:</label><input asp-for="item.name" class="form-control" />
+                            <label>Search for an item:</label><input asp-for="item.name" class="form-control" />
                         </div>
                         <div class="text-center">
                             <input class="btn btn-primary" type="submit" value="Submit" placeholder="Type here" />
@@ -40,7 +46,7 @@
                     <img class="card-img-top w-100 d-block mx-auto" src="@Model.item.icon_large" style="max-height:75%; max-width:75%;">
                 </div>
                 <div class="col-8">
-                    <table class="table table-bordered table-secondary">
+                    <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Item Name</th>
@@ -66,7 +72,7 @@
                 </div>
             </div>
             <div>
-                <div class="card bg-third">
+                <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Description</h4>
                         <p class="card-text">@Model.item.description</p>
@@ -75,7 +81,6 @@
                 </div>
             </div>
             <br /><div class="text-center"><a class="btn btn-primary text-white justify-content-center" href="/categories/@TempData["Category"]">Back to @TempData["Category"]</a></div>
-            
         </div>
 
 </body>

@@ -2,7 +2,12 @@
 <html>
 
 <head>
-
+    <link rel="stylesheet" href="~/lib/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="~/lib/assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="~/lib/assets/css/Article-List.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="~/lib/assets/css/smoothproducts.css">
 </head>
 
 <body>
@@ -10,7 +15,7 @@
     <br />
     <br />
     <p class="text-danger">@TempData["Error"]</p>
-    @Html.Partial("SearchBar")
+    <partial name="SearchBar" />
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -75,11 +80,7 @@
         </div>
     </div>
 </div>
-    <div class="card"></div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="assets/js/freelancer.js"></script>
+
 </body>
 
 </html>

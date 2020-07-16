@@ -29,7 +29,6 @@
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\Components\" />
     <Folder Include="Views\Stocks\" />
-    <Folder Include="wwwroot\lib\Pictures\" />
   </ItemGroup>
 
   <ItemGroup>
