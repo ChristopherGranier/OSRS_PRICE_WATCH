@@ -40,7 +40,8 @@ namespace OSRS_PRICE_WATCH.Controllers
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Weapons[i] + "\", \"duplicate\": false }";
                 DesWeapons[i] = DownloadedItem.Download_serialized_json_data(url);
             }
-            return View(DesWeapons);
+            TempData["Category"] = "Weapons";
+            return View("Categories",DesWeapons);
         }
 
         public ViewResult Food()
@@ -62,7 +63,10 @@ namespace OSRS_PRICE_WATCH.Controllers
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Food[i] + "\", \"duplicate\": false }";
                 DesFood[i] = DownloadedItem.Download_serialized_json_data(url);
             }
-            return View(DesFood);
+            TempData["Category"] = "Food";
+
+
+            return View("Categories", DesFood);
         }
 
         public ViewResult Armor()
@@ -89,7 +93,10 @@ namespace OSRS_PRICE_WATCH.Controllers
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Armor[i] + "\", \"duplicate\": false }";
                 DesArmor[i] = DownloadedItem.Download_serialized_json_data(url);
             }
-            return View(DesArmor);
+            TempData["Category"] = "Armor";
+
+
+            return View("Categories", DesArmor);
         }
 
         public ViewResult Potions()
@@ -115,7 +122,10 @@ namespace OSRS_PRICE_WATCH.Controllers
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Potions[i] + "\", \"duplicate\": false }";
                 DesPotions[i] = DownloadedItem.Download_serialized_json_data(url);
             }
-            return View(DesPotions);
+            TempData["Category"] = "Potions";
+
+
+            return View("Categories", DesPotions);
         }
 
         public ViewResult Woodcutting()
@@ -140,7 +150,10 @@ namespace OSRS_PRICE_WATCH.Controllers
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Woodcutting[i] + "\", \"duplicate\": false }";
                 DesWoodcutting[i] = DownloadedItem.Download_serialized_json_data(url);
             }
-            return View(DesWoodcutting);
+            TempData["Category"] = "Woodcutting";
+
+
+            return View("Categories", DesWoodcutting);
         }
 
         public ViewResult Mining()
@@ -165,7 +178,10 @@ namespace OSRS_PRICE_WATCH.Controllers
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + Mining[i] + "\", \"duplicate\": false }";
                 DesMining[i] = DownloadedItem.Download_serialized_json_data(url);
             }
-            return View(DesMining);
+            TempData["Category"] = "Mining";
+
+
+            return View("Categories", DesMining);
         }
     }
 }

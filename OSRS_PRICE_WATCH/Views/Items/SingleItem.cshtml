@@ -1,0 +1,82 @@
+﻿@model RootobjectOsrsGe
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+</head>
+<body>
+        <br />
+        <br />
+        <br />
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-md">
+                    <br />
+                    <div class="card clean-card text-center">
+                        <div class="card-body bg-third">
+                            <h1 class="card-title">@Model.item.name.ToUpper()</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <form asp-action="SingleItem" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group text-center">
+                            <label class="text-white">Search for an item:</label><input asp-for="item.name" class="form-control" />
+                        </div>
+                        <div class="text-center">
+                            <input class="btn btn-primary" type="submit" value="Submit" placeholder="Type here" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-4">
+                    <img class="card-img-top w-100 d-block mx-auto" src="@Model.item.icon_large" style="max-height:75%; max-width:75%;">
+                </div>
+                <div class="col-8">
+                    <table class="table table-bordered table-secondary">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Item Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Price Change Today</th>
+                                <th scope="col">30 Day % Price Change</th>
+                                <th scope="col">90 Day % Price Change</th>
+                                <th scope="col">180 Day % Price Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.item.name</td>
+                                <td>@Model.item.current.price GP</td>
+                                <td>@Model.item.today.price GP</td>
+                                <td>@Model.item.day30.change</td>
+                                <td>@Model.item.day90.change</td>
+                                <td>@Model.item.day180.change</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div>
+                <div class="card bg-third">
+                    <div class="card-body">
+                        <h4 class="card-title">Description</h4>
+                        <p class="card-text">@Model.item.description</p>
+                    </div>
+
+                </div>
+            </div>
+            <br /><div class="text-center"><a class="btn btn-primary text-white justify-content-center" href="/categories/@TempData["Category"]">Back to @TempData["Category"]</a></div>
+            
+        </div>
+
+</body>
+</html>

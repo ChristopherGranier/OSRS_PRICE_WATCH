@@ -1,0 +1,15 @@
+﻿@model Items
+
+
+    <div>
+        <form asp-action="Stocks" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group text-center">
+                <label asp-for="Name">Search for an item:</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="text-center">
+                <input class="btn btn-primary" type="submit" value="Search" placeholder="Type here" />
+            </div>
+        </form>
+    </div>
