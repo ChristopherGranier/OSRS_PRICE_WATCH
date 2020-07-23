@@ -1,0 +1,21 @@
+﻿@model AccountInformation
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_Layout";
+}
+    <br /><br />
+<h2>Log in:</h2>
+<div class="text-danger" asp-validation-summary="All"></div>
+<form asp-action="Login" asp-controller="Account" method="post">
+    <div class="form-group">
+        <label asp-for="UserID"></label>
+        <div><span asp-validation-for="UserID" class="text-danger"></span></div>
+        <input asp-for="UserID" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <div><span asp-validation-for="Password" class="text-danger"></span></div>
+        <input asp-for="Password" class="form-control" />
+    </div>
+    <button class="btn btn-primary" type="submit">Log In</button>
+</form>
