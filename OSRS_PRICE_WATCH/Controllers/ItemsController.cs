@@ -6,11 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using OSRS_PRICE_WATCH.Models;
 using OsrsBoxImplementation;
 using static OsrsBoxImplementation.OsrsGe;
+using Microsoft.AspNetCore.Identity;
 
 namespace OSRS_PRICE_WATCH.Controllers
 {
     public class ItemsController : Controller
     {
+        private IFavoritesRepository repository;
+        private UserManager<AppUser> userManager;
+        public ItemsController(IFavoritesRepository repo, UserManager<AppUser> userMgr)
+        {
+            repository = repo;
+            userManager = userMgr;
+        }
+
+
         /*
          * Formats the search to input into OSRSBox Api
          * 
@@ -18,10 +28,26 @@ namespace OSRS_PRICE_WATCH.Controllers
          *              specificItem, RootobjectOsrsGe- used to gather GE information from the OSRS GE API
          * 
          */
+
+
+        //public IActionResult SaveItem(RootobjectOsrsGe items)
+        //{ 
+        //    FavoriteModel favorite = new FavoriteModel
+        //    {
+        //        ItemID = items.item.id.ToString(),
+        //        Username = HttpContext.User.Identity.Name
+        //    };
+        //    repository.SaveFavorite(favorite);
+        //    return View("Home/Index");
+        //}
+
+
         public IActionResult SingleItem(Items item)
         {
+            
             item.Name = item.Name.ToLower();
             item.Name = char.ToUpper(item.Name[0]) + item.Name.Substring(1);
+            ViewBag.ItemName = item.Name;
             RootobjectOsrsGe specificItem = new RootobjectOsrsGe();
             var url = "https://api.osrsbox.com/items?where={ \"name\": \"" + item.Name + "\", \"duplicate\": false }&max_results=1";
             _Items searchedItems = new _Items();
@@ -59,6 +85,7 @@ namespace OSRS_PRICE_WATCH.Controllers
             {
                 Items newItem = new Items();
                 newItem.Name = searchedItem.item.name;
+                ViewBag.ItemName = newItem.Name;
                 return RedirectToAction("SingleItem", newItem);
             }
             else

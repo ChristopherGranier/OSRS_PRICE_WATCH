@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OSRS_PRICE_WATCH.Models;
 using OsrsBoxImplementation;
@@ -11,9 +12,24 @@ namespace OSRS_PRICE_WATCH.Controllers
 {
     public class HomeController : Controller
     {
+        private IFavoritesRepository repository;
+
+        public HomeController(IFavoritesRepository repo)
+        {
+            repository = repo;
+        }
 
         public ViewResult About() => View();
-        public ViewResult Favorites() => View();
+
+
+        private Dictionary<string, object> GetData(string actionName) => new Dictionary<string, object>
+        {
+            ["Action"] = actionName,
+            ["User"] = HttpContext.User.Identity.Name,
+            ["Authenticated"] = HttpContext.User.Identity.IsAuthenticated,
+            ["Auth Type"] = HttpContext.User.Identity.AuthenticationType,
+            ["In Users Role"] = HttpContext.User.IsInRole("Users")
+        };
 
         public ActionResult Stocks() => View();
 
