@@ -1,4 +1,8 @@
 ﻿@model RoleEditModel
+<br />
+<br />
+<br />
+<br />
 <div class="bg-primary m-1 p-1 text-white"><h4>Edit Role</h4></div>
 <div asp-validation-summary="All" class="text-danger"></div>
 <form asp-action="Edit" method="post">
@@ -8,18 +12,18 @@
     <table class="table table-bordered table-sm">
         @if (Model.NonMembers.Count() == 0)
         {
-            <tr><td colspan="2">All Users Are Members</td></tr>
+        <tr><td colspan="2">All Users Are Members</td></tr>
         }
         else
         {
-            @foreach (AppUser user in Model.NonMembers)
+        @foreach (AppUser user in Model.NonMembers)
             {
-                <tr>
-                    <td>@user.UserName</td>
-                    <td>
-                        <input type="checkbox" name="IdsToAdd" value="@user.Id" />
-                    </td>
-                </tr>
+        <tr>
+            <td>@user.UserName</td>
+            <td>
+                <input type="checkbox" name="IdsToAdd" value="@user.Id" />
+            </td>
+        </tr>
             }
         }
     </table>
@@ -27,18 +31,18 @@
     <table class="table table-bordered table-sm">
         @if (Model.Members.Count() == 0)
         {
-            <tr><td colspan="2">No Users Are Members</td></tr>
+        <tr><td colspan="2">No Users Are Members</td></tr>
         }
         else
         {
-            @foreach (AppUser user in Model.Members)
+        @foreach (AppUser user in Model.Members)
             {
-                <tr>
-                    <td>@user.UserName</td>
-                    <td>
-                        <input type="checkbox" name="IdsToDelete" value="@user.Id" />
-                    </td>
-                </tr>
+        <tr>
+            <td>@user.UserName</td>
+            <td>
+                <input type="checkbox" name="IdsToDelete" value="@user.Id" />
+            </td>
+        </tr>
             }
         }
     </table>
