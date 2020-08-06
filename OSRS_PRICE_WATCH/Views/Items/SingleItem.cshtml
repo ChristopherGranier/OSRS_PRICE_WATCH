@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Search</title>
+    <title>@Model.item.name</title>
     <link rel="stylesheet" href="~/lib/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="~/lib/assets/fonts/simple-line-icons.min.css">
@@ -15,87 +15,127 @@
     <link rel="stylesheet" href="~/lib/assets/css/smoothproducts.css">
 </head>
 <body>
-        <br />
-        <br />
-        <br />
-        <div class="container-xl">
-            <div class="row">
-                <div class="col-md">
-                    <br />
-                    <div class="card clean-card text-center">
-                        <div class="card-body">
-                            <h1 class="card-title">@Model.item.name.ToUpper()</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md border-dark">
-                    <form asp-action="SingleItem" method="post">
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        <div class="form-group text-center">
-                            <label>Search for an item:</label><input asp-for="item.name" class="form-control" />
-                        </div>
-                        <div class="text-center">
-                            <input class="btn btn-primary" type="submit" value="Submit" placeholder="Type here" />
-                        </div>
-                    </form>
-                </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    @if (TempData["Result"] != null)
+    {
+        @if (TempData["Result"].Equals("Item successfully added to favorites"))
+        {
+            <div class="container-fluid">
+                <div class="text-center w-50 col-8 offset-3"><h2 class="text-center border bg-success text-white">@TempData["Result"]</h2></div>
             </div>
-            <br />
-            <div class="row">
-                <div class="col-4">
-                    <img class="card-img-top w-100 d-block mx-auto" src="@Model.item.icon_large" style="max-height:75%; max-width:75%;">
-                </div>
-                <div class="col-8">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Item Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Price Change Today</th>
-                                <th scope="col">30 Day % Price Change</th>
-                                <th scope="col">90 Day % Price Change</th>
-                                <th scope="col">180 Day % Price Change</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>@Model.item.name</td>
-                                <td>@Model.item.current.price GP</td>
-                                <td>@Model.item.today.price GP</td>
-                                <td>@Model.item.day30.change</td>
-                                <td>@Model.item.day90.change</td>
-                                <td>@Model.item.day180.change</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        }
+        else if (TempData["Result"].Equals("This item is already in your favorites"))
+        {
+            <div class="container-fluid">
+                <div class="text-center w-50 col-8 offset-3"><h3 class="text-center border bg-warning text-white">@TempData["Result"]</h3></div>
+            </div>
+        }
+        else if (TempData["Result"].Equals("Something went wrong with adding this item"))
+        {
+            <div class="container-fluid">
+                <div class="text-center w-50 col-8 offset-3"><h3 class="text-center border bg-danger text-white">@TempData["Result"]</h3></div>
+            </div>
+        }
 
-                </div>
-            </div>
-            <div>
-                <div class="card">
+    }
+
+
+
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-md">
+                <br />
+                <div class="card clean-card text-center">
                     <div class="card-body">
-                        <h4 class="card-title">Description</h4>
-                        <p class="card-text">@Model.item.description</p>
+                        <h1 class="card-title">@Model.item.name.ToUpper()</h1>
                     </div>
-
                 </div>
             </div>
-            @if (User?.Identity?.IsAuthenticated ?? false)
-            {
-                <div class="text-center">
-                    @using (Html.BeginForm("SaveItem", "Favorites", FormMethod.Post))
-                    {
-                        @Html.TextBoxFor(s => s.item.name, new { @readonly = true, @visible = false })
-                        <input type="submit" value="Favorite Item" />
-                    }
-                </div>
-            }
-            else
-            {
-
-            }
-            <br /><div class="text-center"><a class="btn btn-primary text-white justify-content-center" href="/categories/@TempData["Category"]">Back to @TempData["Category"]</a></div>
+            <div class="col-md border-dark">
+                <form asp-action="SingleItem" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group text-center">
+                        <label>Search for an item:</label><input asp-for="item.name" class="form-control" />
+                    </div>
+                    <div class="text-center">
+                        <input class="btn btn-primary" type="submit" value="Submit" placeholder="Type here" />
+                    </div>
+                </form>
+            </div>
         </div>
+        <br />
+        <div class="row">
+            <div class="col-4">
+                <img class="card-img-top w-100 d-block mx-auto" src="@Model.item.icon_large" style="max-height:75%; max-width:75%;">
+            </div>
+            <div class="col-8">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Price Change Today</th>
+                            <th scope="col">30 Day % Price Change</th>
+                            <th scope="col">90 Day % Price Change</th>
+                            <th scope="col">180 Day % Price Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.item.name.ToTitleCase()</td>
+                            <td>@Model.item.current.price GP</td>
+                            <td>@Model.item.today.price GP</td>
+                            <td>@Model.item.day30.change</td>
+                            <td>@Model.item.day90.change</td>
+                            <td>@Model.item.day180.change</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Description</h4>
+                    <p class="card-text">@Model.item.description</p>
+                </div>
+
+            </div>
+        </div>
+        <br />
+        @if (User?.Identity?.IsAuthenticated ?? false)
+        {
+            <div class="text-center">
+                @using (Html.BeginForm("SaveItem", "Favorites", new { returnUrl = "/Items/SingleItem?Name=" + @Model.item.name }, FormMethod.Post))
+                {
+                    @Html.TextBoxFor(s => s.item.name, new { @readonly = true, style = "display: none;" })
+                    <input type="submit" value="Favorite Item" class="btn btn-primary" />
+                }
+            </div>
+        }
+        else
+        {
+
+        }
+        @if (TempData["Category"] != null)
+        {
+            <br /><div class="text-center"><a class="btn btn-primary text-white justify-content-center" href="/categories/@TempData["Category"]">Back to @TempData["Category"]</a></div>
+        }
+        else
+        {
+            <br /><div class="text-center"><a class="btn btn-primary text-white justify-content-center" asp-action="Stocks" asp-controller="Home">Back to Categories</a></div>
+
+        }
+        @if ((string)TempData["Favorite"] == "true")
+        {
+            <br /><div class="text-center"><a class="btn btn-primary text-white justify-content-center" asp-action="MyFavorites" asp-controller="Favorites">Back to Favorites</a></div>
+
+        }
+    </div>
 
 </body>
 </html>

@@ -31,7 +31,17 @@ namespace OSRS_PRICE_WATCH.Controllers
             ["In Users Role"] = HttpContext.User.IsInRole("Users")
         };
 
-        public ActionResult Stocks() => View();
+        public ActionResult Stocks()
+        {
+            if(RequestExtensions.IsMobileBrowser(HttpContext.Request) == true)
+            {
+                return View("Stocks.Mobile");
+            }
+            else
+            {
+                return View("Stocks");
+            }
+        }
 
         /*
          * Default landing page
@@ -46,7 +56,7 @@ namespace OSRS_PRICE_WATCH.Controllers
         public ViewResult Index()
         {
             var url = string.Empty;
-
+           
             List<string> featItems = new List<string>()
             {
                 "Abyssal whip",

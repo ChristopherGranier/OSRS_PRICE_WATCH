@@ -27,6 +27,7 @@ namespace OSRS_PRICE_WATCH
 
             services.AddIdentity<AppUser, IdentityRole>(opts =>
             {
+                opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=!@#$%^&*()_";
                 opts.Password.RequiredLength = 8;
                 opts.Password.RequireNonAlphanumeric = true;
                 opts.Password.RequireDigit = true;
@@ -34,7 +35,7 @@ namespace OSRS_PRICE_WATCH
                 opts.Password.RequireUppercase = true;
             }).AddEntityFrameworkStores<AppIdentityDbContext>()
               .AddDefaultTokenProviders();
-            services.AddTransient<IFavoritesRepository, FavoritesRepository>();
+            services.AddScoped<IFavoritesRepository, FavoritesRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 

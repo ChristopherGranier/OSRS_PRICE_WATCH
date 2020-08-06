@@ -13,11 +13,12 @@ namespace OSRS_PRICE_WATCH.Controllers
     //eg. weapons
     public class CategoriesController : Controller
     {
-        
+
 
         /*
          * Populates an instance of the _Items[] class
          * with predefined items to be gathered from the api 
+         * gathered from the Categories class
          * 
          * Every action in this controller uses the same logic
          * 
@@ -34,7 +35,7 @@ namespace OSRS_PRICE_WATCH.Controllers
                 DesWeapons[i] = DownloadedItem.Download_serialized_json_data(url);
             }
             TempData["Category"] = "Weapons";
-            return View("Categories",DesWeapons);
+            return View("Categories", DesWeapons);
         }
 
         public ViewResult Food()
@@ -118,7 +119,13 @@ namespace OSRS_PRICE_WATCH.Controllers
             return View("Categories", DesMining);
         }
 
-
+        /*
+         * Gathers the predefined item list from the categories
+         * class based on which category is being sorted
+         * 
+         * Sorts the items displayed by name
+         * 
+         */
         public ViewResult NameFilter(int id)
         {
             var category = TempData["Category"];
@@ -136,10 +143,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Potions";
 
                     List<_Items> sortedList = DesPotions.OrderBy(n => n.wiki_name).ToList();
-                    _Items[] desPotionsSortedName = new _Items[Categories.Potions.Count()];
-                    desPotionsSortedName = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desPotionsSortedName = new _Items[Categories.Potions.Count()];
+                        desPotionsSortedName = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desPotionsSortedName);
+                        return View("Categories", desPotionsSortedName);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desPotionsSortedName = new _Items[Categories.Potions.Count()];
+                        desPotionsSortedName = sortedList.ToArray();
+                        return View("Categories", desPotionsSortedName);
+                    }
 
                 case "Weapons":
                     url = string.Empty;
@@ -152,10 +171,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Weapons";
 
                     sortedList = DesWeapons.OrderBy(p => p.wiki_name).ToList();
-                    _Items[] desWeaponsSortedName = new _Items[Categories.Weapons.Count()];
-                    desWeaponsSortedName = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desWeaponsSortedName = new _Items[Categories.Potions.Count()];
+                        desWeaponsSortedName = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desWeaponsSortedName);
+                        return View("Categories", desWeaponsSortedName);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desWeaponsSortedName = new _Items[Categories.Potions.Count()];
+                        desWeaponsSortedName = sortedList.ToArray();
+                        return View("Categories", desWeaponsSortedName);
+                    }
 
                 case "Food":
                     url = string.Empty;
@@ -168,10 +199,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Food";
 
                     sortedList = DesFood.OrderBy(p => p.wiki_url).ToList();
-                    _Items[] desFoodSortedName = new _Items[Categories.Food.Count()];
-                    desFoodSortedName = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desFoodSortedName = new _Items[Categories.Potions.Count()];
+                        desFoodSortedName = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desFoodSortedName);
+                        return View("Categories", desFoodSortedName);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desFoodSortedName = new _Items[Categories.Potions.Count()];
+                        desFoodSortedName = sortedList.ToArray();
+                        return View("Categories", desFoodSortedName);
+                    }
 
                 case "Armor":
                     url = string.Empty;
@@ -184,10 +227,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Armor";
 
                     sortedList = DesArmor.OrderBy(p => p.wiki_url).ToList();
-                    _Items[] desArmorSortedPrice = new _Items[Categories.Armor.Count()];
-                    desArmorSortedPrice = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desArmorSortedPrice = new _Items[Categories.Potions.Count()];
+                        desArmorSortedPrice = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desArmorSortedPrice);
+                        return View("Categories", desArmorSortedPrice);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desArmorSortedPrice = new _Items[Categories.Potions.Count()];
+                        desArmorSortedPrice = sortedList.ToArray();
+                        return View("Categories", desArmorSortedPrice);
+                    }
 
                 case "Woodcutting":
                     url = string.Empty;
@@ -200,10 +255,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Woodcutting";
 
                     sortedList = DesWoodcutting.OrderBy(p => p.wiki_name).ToList();
-                    _Items[] desWoodcuttingSortedPrice = new _Items[Categories.Woodcutting.Count()];
-                    desWoodcuttingSortedPrice = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desWoodcuttingSortedPrice = new _Items[Categories.Potions.Count()];
+                        desWoodcuttingSortedPrice = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desWoodcuttingSortedPrice);
+                        return View("Categories", desWoodcuttingSortedPrice);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desWoodcuttingSortedPrice = new _Items[Categories.Potions.Count()];
+                        desWoodcuttingSortedPrice = sortedList.ToArray();
+                        return View("Categories", desWoodcuttingSortedPrice);
+                    }
 
                 case "Mining":
                     url = string.Empty;
@@ -216,14 +283,35 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Mining";
 
                     sortedList = DesMining.OrderBy(p => p.wiki_name).ToList();
-                    _Items[] desMiningSortedPrice = new _Items[Categories.Mining.Count()];
-                    desMiningSortedPrice = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desMiningSortedPrice = new _Items[Categories.Potions.Count()];
+                        desMiningSortedPrice = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desMiningSortedPrice);
-            }               
+                        return View("Categories", desMiningSortedPrice);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desMiningSortedPrice = new _Items[Categories.Potions.Count()];
+                        desMiningSortedPrice = sortedList.ToArray();
+                        return View("Categories", desMiningSortedPrice);
+                    }
+            }
             return View();
         }
 
+  
+
+        /*
+        * Gathers the predefined item list from the categories
+        * class based on which category is being sorted
+        * 
+        * Sorts the items displayed by price
+        * 
+        */
         public ViewResult PriceFilter(int id)
         {
             var category = TempData["Category"];
@@ -241,10 +329,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Potions";
 
                     List<_Items> sortedList = DesPotions.OrderBy(p => p.cost).ToList();
-                    _Items[] desPotionsSortedPrice = new _Items[Categories.Potions.Count()];
-                    desPotionsSortedPrice = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desPotionsSortedPrice = new _Items[Categories.Potions.Count()];
+                        desPotionsSortedPrice = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desPotionsSortedPrice);
+                        return View("Categories", desPotionsSortedPrice);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desPotionsSortedPrice = new _Items[Categories.Potions.Count()];
+                        desPotionsSortedPrice = sortedList.ToArray();
+                        return View("Categories", desPotionsSortedPrice);
+                    }                    
 
                 case "Weapons":
                     url = string.Empty;
@@ -257,11 +357,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Weapons";
 
                     sortedList = DesWeapons.OrderBy(p => p.cost).ToList();
-                    _Items[] desWeaponsSortedPrice = new _Items[Categories.Weapons.Count()];
-                    desWeaponsSortedPrice = sortedList.ToArray();
-                    
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desWeaponsSortedPrice = new _Items[Categories.Potions.Count()];
+                        desWeaponsSortedPrice = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desWeaponsSortedPrice);
+                        return View("Categories", desWeaponsSortedPrice);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desWeaponsSortedPrice = new _Items[Categories.Potions.Count()];
+                        desWeaponsSortedPrice = sortedList.ToArray();
+                        return View("Categories", desWeaponsSortedPrice);
+                    }
 
                 case "Food":
                     url = string.Empty;
@@ -274,10 +385,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Food";
 
                     sortedList = DesFood.OrderBy(p => p.cost).ToList();
-                    _Items[] desFoodSortedPrice = new _Items[Categories.Food.Count()];
-                    desFoodSortedPrice = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desFoodSortedPrice = new _Items[Categories.Potions.Count()];
+                        desFoodSortedPrice = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desFoodSortedPrice);
+                        return View("Categories", desFoodSortedPrice);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desFoodSortedPrice = new _Items[Categories.Potions.Count()];
+                        desFoodSortedPrice = sortedList.ToArray();
+                        return View("Categories", desFoodSortedPrice);
+                    }
 
                 case "Armor":
                     url = string.Empty;
@@ -290,10 +413,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Armor";
 
                     sortedList = DesArmor.OrderBy(p => p.cost).ToList();
-                    _Items[] desArmorSortedPrice = new _Items[Categories.Armor.Count()];
-                    desArmorSortedPrice = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desArmorSortedPrice = new _Items[Categories.Potions.Count()];
+                        desArmorSortedPrice = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desArmorSortedPrice);
+                        return View("Categories", desArmorSortedPrice);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desArmorSortedPrice = new _Items[Categories.Potions.Count()];
+                        desArmorSortedPrice = sortedList.ToArray();
+                        return View("Categories", desArmorSortedPrice);
+                    }
 
                 case "Woodcutting":
                     url = string.Empty;
@@ -306,10 +441,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Woodcutting";
 
                     sortedList = DesWoodcutting.OrderBy(p => p.cost).ToList();
-                    _Items[] desWoodcuttingSortedPrice = new _Items[Categories.Woodcutting.Count()];
-                    desWoodcuttingSortedPrice = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desWoodcuttingSortedPrice = new _Items[Categories.Potions.Count()];
+                        desWoodcuttingSortedPrice = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desWoodcuttingSortedPrice);
+                        return View("Categories", desWoodcuttingSortedPrice);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desWoodcuttingSortedPrice = new _Items[Categories.Potions.Count()];
+                        desWoodcuttingSortedPrice = sortedList.ToArray();
+                        return View("Categories", desWoodcuttingSortedPrice);
+                    }
 
                 case "Mining":
                     url = string.Empty;
@@ -322,16 +469,33 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Mining";
 
                     sortedList = DesMining.OrderBy(p => p.cost).ToList();
-                    _Items[] desMiningSortedPrice = new _Items[Categories.Mining.Count()];
-                    desMiningSortedPrice = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desMiningSortedPrice = new _Items[Categories.Potions.Count()];
+                        desMiningSortedPrice = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desMiningSortedPrice);
-
-
+                        return View("Categories", desMiningSortedPrice);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desMiningSortedPrice = new _Items[Categories.Potions.Count()];
+                        desMiningSortedPrice = sortedList.ToArray();
+                        return View("Categories", desMiningSortedPrice);
+                    }
             }
             return View();
         }
 
+        /*
+        * Gathers the predefined item list from the categories
+        * class based on which category is being sorted
+        * 
+        * Sorts the items displayed by high alch value
+        * 
+        */
         public ViewResult HAFilter(int id)
         {
             var category = TempData["Category"];
@@ -349,10 +513,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Potions";
 
                     List<_Items> sortedList = DesPotions.OrderBy(n => n.highalch).ToList();
-                    _Items[] desPotionsSortedHA = new _Items[Categories.Potions.Count()];
-                    desPotionsSortedHA = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desPotionsSortedHA = new _Items[Categories.Potions.Count()];
+                        desPotionsSortedHA = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desPotionsSortedHA);
+                        return View("Categories", desPotionsSortedHA);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desPotionsSortedHA = new _Items[Categories.Potions.Count()];
+                        desPotionsSortedHA = sortedList.ToArray();
+                        return View("Categories", desPotionsSortedHA);
+                    }
 
                 case "Weapons":
                     url = string.Empty;
@@ -365,10 +541,23 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Weapons";
 
                     sortedList = DesWeapons.OrderBy(p => p.highalch).ToList();
-                    _Items[] desWeaponsSortedHA = new _Items[Categories.Weapons.Count()];
-                    desWeaponsSortedHA = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desWeaponsSortedHA = new _Items[Categories.Potions.Count()];
+                        desWeaponsSortedHA = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desWeaponsSortedHA);
+                        return View("Categories", desWeaponsSortedHA);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desWeaponsSortedHA = new _Items[Categories.Potions.Count()];
+                        desWeaponsSortedHA = sortedList.ToArray();
+                        return View("Categories", desWeaponsSortedHA);
+                    }
+ 
 
                 case "Food":
                     url = string.Empty;
@@ -381,10 +570,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Food";
 
                     sortedList = DesFood.OrderBy(p => p.highalch).ToList();
-                    _Items[] desFoodSortedHA = new _Items[Categories.Food.Count()];
-                    desFoodSortedHA = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desFoodSortedHA = new _Items[Categories.Potions.Count()];
+                        desFoodSortedHA = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desFoodSortedHA);
+                        return View("Categories", desFoodSortedHA);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desFoodSortedHA = new _Items[Categories.Potions.Count()];
+                        desFoodSortedHA = sortedList.ToArray();
+                        return View("Categories", desFoodSortedHA);
+                    }
 
                 case "Armor":
                     url = string.Empty;
@@ -397,10 +598,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Armor";
 
                     sortedList = DesArmor.OrderBy(p => p.highalch).ToList();
-                    _Items[] desArmorSortedHA = new _Items[Categories.Armor.Count()];
-                    desArmorSortedHA = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desArmorSortedHA = new _Items[Categories.Potions.Count()];
+                        desArmorSortedHA = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desArmorSortedHA);
+                        return View("Categories", desArmorSortedHA);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desArmorSortedHA = new _Items[Categories.Potions.Count()];
+                        desArmorSortedHA = sortedList.ToArray();
+                        return View("Categories", desArmorSortedHA);
+                    }
 
                 case "Woodcutting":
                     url = string.Empty;
@@ -413,10 +626,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Woodcutting";
 
                     sortedList = DesWoodcutting.OrderBy(p => p.highalch).ToList();
-                    _Items[] desWoodcuttingSortedHA = new _Items[Categories.Woodcutting.Count()];
-                    desWoodcuttingSortedHA = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desWoodcuttingSortedHA = new _Items[Categories.Potions.Count()];
+                        desWoodcuttingSortedHA = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desWoodcuttingSortedHA);
+                        return View("Categories", desWoodcuttingSortedHA);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desWoodcuttingSortedHA = new _Items[Categories.Potions.Count()];
+                        desWoodcuttingSortedHA = sortedList.ToArray();
+                        return View("Categories", desWoodcuttingSortedHA);
+                    }
 
                 case "Mining":
                     url = string.Empty;
@@ -429,10 +654,22 @@ namespace OSRS_PRICE_WATCH.Controllers
                     TempData["Category"] = "Mining";
 
                     sortedList = DesMining.OrderBy(p => p.highalch).ToList();
-                    _Items[] desMiningSortedHA = new _Items[Categories.Mining.Count()];
-                    desMiningSortedHA = sortedList.ToArray();
+                    if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+                    {
+                        _Items[] desMiningSortedHA = new _Items[Categories.Potions.Count()];
+                        desMiningSortedHA = sortedList.ToArray();
+                        TempData["Sorted"] = "low";
 
-                    return View("Categories", desMiningSortedHA);
+                        return View("Categories", desMiningSortedHA);
+                    }
+                    else
+                    {
+                        sortedList.Reverse();
+                        TempData["Sorted"] = "high";
+                        _Items[] desMiningSortedHA = new _Items[Categories.Potions.Count()];
+                        desMiningSortedHA = sortedList.ToArray();
+                        return View("Categories", desMiningSortedHA);
+                    }
             }
             return View();
         }

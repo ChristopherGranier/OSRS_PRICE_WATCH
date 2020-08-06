@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace OSRS_PRICE_WATCH.Controllers
 {
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private UserManager<AppUser> userManager;
@@ -24,6 +24,10 @@ namespace OSRS_PRICE_WATCH.Controllers
 
         public ViewResult Create() => View();
 
+        /*
+         * Create action to create a user
+         * 
+         */
         [HttpPost]
         public async Task<IActionResult> Create(CreateModel model)
         {
@@ -49,6 +53,10 @@ namespace OSRS_PRICE_WATCH.Controllers
             return View(model);
         }
 
+        /*
+         * Delete Action to delete a user
+         * 
+         */
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
@@ -72,6 +80,10 @@ namespace OSRS_PRICE_WATCH.Controllers
             return View("Index", userManager.Users);
         }
 
+        /*
+         * Edit action to change a password
+         * 
+         */
         public async Task<IActionResult> Edit(string id)
         {
             AppUser user = await userManager.FindByIdAsync(id);

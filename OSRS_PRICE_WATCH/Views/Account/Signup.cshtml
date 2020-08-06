@@ -5,6 +5,7 @@
 }
 <br />
 <br />
+<br />
 <div class="text-danger" asp-validation-summary="All"></div>
 <h2>Create an account:</h2>
 <form asp-action="Signup" asp-controller="Account" method="post">
@@ -16,7 +17,7 @@
     <div class="form-group">
         <label asp-for="Password"></label>
         <div><span asp-validation-for="Password" class="text-danger"></span></div>
-        <input asp-for="Password" class="form-control" />
+        <input asp-for="Password" type="password" class="form-control" />
     </div>
     <button class="btn btn-primary" type="submit">Sign up</button>
 </form>

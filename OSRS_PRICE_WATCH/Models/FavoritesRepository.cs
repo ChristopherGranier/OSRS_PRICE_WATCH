@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace OSRS_PRICE_WATCH.Models
 {
@@ -10,7 +11,10 @@ namespace OSRS_PRICE_WATCH.Models
     {
         IQueryable<FavoriteModel> Items { get; }
         int SaveFavorite(FavoriteModel item);
+
+        FavoriteModel DeleteFavorite(FavoriteModel item);
     }
+
     public class FavoritesRepository : IFavoritesRepository
     {
         private ApplicationDbContext context;
@@ -19,23 +23,21 @@ namespace OSRS_PRICE_WATCH.Models
             context = ctx;
         }
 
-        public IQueryable<FavoriteModel> Items => context.Favorites;
+        public IQueryable<FavoriteModel> Items => context.Favorites.FromSqlRaw("SELECT * FROM dbo.Favorites");
         public int SaveFavorite(FavoriteModel item)
         {
-
-            if ((context.Favorites.Where(i => i.Username == item.Username)
-                    .Select(i => i.Username)
-                    .FirstOrDefault() == item.Username) &&
-                    (context.Favorites
-                    .Where(i => i.ItemID == item.ItemID)
-                    .Select(i => i.ItemID)
-                    .FirstOrDefault() == item.ItemID))
+            int temp = this.Items.Where(i => i.Username == item.Username).Where(i => i.ItemID == item.ItemID).Count();
+            //if((context.Favorites.FromSqlRaw("Select Username, ItemID FROM dbo.Favorites WHERE username = '" + item.Username + "' AND itemId = '" + item.ItemID + "'")).Count() > 0)
+            //{
+                
+            //}
+            if (temp > 0)
             {
 
                 if (item.ItemID == null || item.Username == null)
                 {
 
-                    return 0;
+                    return 2;
                 }
                 return 0;
             }
@@ -45,8 +47,14 @@ namespace OSRS_PRICE_WATCH.Models
                 context.SaveChanges();
                 return 1;
             }
-            
+        }
 
+        public FavoriteModel DeleteFavorite(FavoriteModel item)
+        {
+            FavoriteModel dbEntry = context.Favorites.FirstOrDefault(i => i.FavoritesID == item.FavoritesID);
+            context.Remove(dbEntry);
+            context.SaveChanges();
+            return dbEntry;
             
         }
     }

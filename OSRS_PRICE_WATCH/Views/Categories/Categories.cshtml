@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="~/lib/assets/css/Article-List.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="~/lib/assets/css/smoothproducts.css">
+
 </head>
 <body>
+    <br />
     <br />
     <br />
     <br />
@@ -35,7 +37,7 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Item Name</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Value</th>
                             <th scope="col">High Alch</th>
                             <th scope="col">Low Alch</th>
                             <th scope="col">Wiki Link</th>
@@ -46,12 +48,12 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.wiki_name</td>
-                                <td>@item.cost</td>
-                                <td>@item.highalch</td>
-                                <td>@item.lowalch</td>
+                                <td>@item.wiki_name.ToTitleCase()</td>
+                                <td>@item.cost.ToString("N0") GP</td>
+                                <td>@item.highalch.ToString("N0") GP</td>
+                                <td>@item.lowalch.ToString("N0") GP</td>
                                 <td><a class="btn btn-outline-primary" href="@item.wiki_url">Wiki</a></td>
-                                <td><a class="btn btn-primary text-white" href="/Items/SingleItem?Name=@item.name">View More</a></td>
+                                <td><a class="btn btn-primary text-white" href="/Items/SingleItem?Name=@item.name">View GE Data</a></td>
                             </tr>
                         }
                     </tbody>

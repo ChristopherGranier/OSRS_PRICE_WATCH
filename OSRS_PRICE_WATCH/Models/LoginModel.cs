@@ -9,6 +9,7 @@ namespace OSRS_PRICE_WATCH.Models
     public class LoginModel
     {
         [Required]
+        [MaxLength(15)]
         [UIHint("username")]
         public string Username { get; set; }
 

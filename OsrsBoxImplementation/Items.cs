@@ -49,6 +49,9 @@ namespace OsrsBoxImplementation
     public class _Items
     {
         public string _id { get; set; }
+
+        public string price { get; set; }
+        public string iconSm { get; set; }
         public string id { get; set; }
         public string name { get; set; }
         public bool incomplete { get; set; }

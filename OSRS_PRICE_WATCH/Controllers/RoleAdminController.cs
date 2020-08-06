@@ -25,7 +25,9 @@ namespace OSRS_PRICE_WATCH.Controllers
         public IActionResult Create() => View();
 
 
-        
+        /*
+         * Allows admins to create / delete roles
+         */
         [HttpPost]
         public async Task<IActionResult> Create ([Required]string name)
         {
@@ -67,6 +69,10 @@ namespace OSRS_PRICE_WATCH.Controllers
             return View("Index", roleManager.Roles);
         }
 
+
+        /*
+         * Allows an admin to edit the members of roles
+         */
         public async Task<IActionResult> Edit(string id)
         {
             IdentityRole role = await roleManager.FindByIdAsync(id);

@@ -28,20 +28,6 @@ namespace OSRS_PRICE_WATCH.Controllers
          *              specificItem, RootobjectOsrsGe- used to gather GE information from the OSRS GE API
          * 
          */
-
-
-        //public IActionResult SaveItem(RootobjectOsrsGe items)
-        //{ 
-        //    FavoriteModel favorite = new FavoriteModel
-        //    {
-        //        ItemID = items.item.id.ToString(),
-        //        Username = HttpContext.User.Identity.Name
-        //    };
-        //    repository.SaveFavorite(favorite);
-        //    return View("Home/Index");
-        //}
-
-
         public IActionResult SingleItem(Items item)
         {
             

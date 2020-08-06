@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\ApplicationDb\" />
-    <Folder Include="Views\Cart\" />
     <Folder Include="Views\Components\" />
     <Folder Include="Views\Stocks\" />
   </ItemGroup>

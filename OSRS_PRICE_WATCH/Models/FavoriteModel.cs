@@ -9,6 +9,7 @@ namespace OSRS_PRICE_WATCH.Models
     public class FavoriteModel
     {
         [Key]
+        public int FavoritesID { get; set; }
         public string Username { get; set; }
         public string ItemID { get; set; }
     }
