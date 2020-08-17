@@ -31,18 +31,6 @@ namespace OSRS_PRICE_WATCH.Controllers
             ["In Users Role"] = HttpContext.User.IsInRole("Users")
         };
 
-        public ActionResult Stocks()
-        {
-            if(RequestExtensions.IsMobileBrowser(HttpContext.Request) == true)
-            {
-                return View("Stocks.Mobile");
-            }
-            else
-            {
-                return View("Stocks");
-            }
-        }
-
         /*
          * Default landing page
          * 
@@ -80,6 +68,26 @@ namespace OSRS_PRICE_WATCH.Controllers
         }
 
         /*
+         * Checks if a user is on mobile before sending
+         * them to the stocks page.
+         * 
+         * If a mobile user is detected, it redirects them 
+         * to a mobile friendly page.
+         */
+
+        public ActionResult Stocks()
+        {
+            if (RequestExtensions.IsMobileBrowser(HttpContext.Request) == true)
+            {
+                return View("Stocks.Mobile");
+            }
+            else
+            {
+                return View("Stocks");
+            }
+        }
+
+        /*
          * Validates input on the Name field
          * 
          * 
@@ -96,8 +104,14 @@ namespace OSRS_PRICE_WATCH.Controllers
             }
             else
             {
-
-                return View("Stocks");
+                if (RequestExtensions.IsMobileBrowser(HttpContext.Request) == true)
+                {
+                    return View("Stocks.Mobile");
+                }
+                else
+                {
+                    return View("Stocks");
+                }
             }
         }
 

@@ -56,13 +56,9 @@ namespace OSRS_PRICE_WATCH.Controllers
             {
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + favoritesArr[i].item.name + "\", \"duplicate\": false }";
                 itemFavorites[i] = DownloadedItem.Download_serialized_json_data(url);
-            }
-            for (int i = 0; i < favorites.Count(); i++)
-            {
                 itemFavorites[i].price = favoritesArr[i].item.current.price;
-                itemFavorites[i].iconSm = favoritesArr[i].item.icon;
             }
-
+ 
             TempData["Username"] = HttpContext.User.Identity.Name;
             TempData["Favorite"] = "true";
             
@@ -145,13 +141,29 @@ namespace OSRS_PRICE_WATCH.Controllers
             {
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + favoritesArr[i].item.name + "\", \"duplicate\": false }";
                 prices[i] = (DownloadedItem.Download_serialized_json_data(url));
+                prices[i].price = favoritesArr[i].item.current.price;
             }
             
             List<_Items> sortedList = prices.OrderBy(p => p.cost).ToList();
-            _Items[] sortedPrice = new _Items[Categories.Potions.Count()];
+            _Items[] sortedPrice = new _Items[favorites.Count()];
             sortedPrice = sortedList.ToArray();
             TempData["Username"] = HttpContext.User.Identity.Name;
-            return View("MyFavorites", sortedPrice);
+            if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+            {
+                sortedPrice = new _Items[favorites.Count()];
+                sortedPrice = sortedList.ToArray();
+                TempData["Sorted"] = "low";
+
+                return View("MyFavorites", sortedPrice);
+            }
+            else
+            {
+                sortedList.Reverse();
+                TempData["Sorted"] = "high";
+                sortedPrice = new _Items[Categories.Potions.Count()];
+                sortedPrice = sortedList.ToArray();
+                return View("MyFavorites", sortedPrice);
+            }
         }
 
         public IActionResult HAFilter(int id)
@@ -165,18 +177,34 @@ namespace OSRS_PRICE_WATCH.Controllers
                 url = "https://secure.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item=" + favorites[i].ItemID;
                 favoritesArr[i] = (DownloadedItemOsrsGe.Download_serialized_json_data(url));
             }
-            _Items[] prices = new _Items[favorites.Count()];
+            _Items[] highAlch = new _Items[favorites.Count()];
             for (int i = 0; i < favorites.Count; i++)
             {
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + favoritesArr[i].item.name + "\", \"duplicate\": false }";
-                prices[i] = (DownloadedItem.Download_serialized_json_data(url));
+                highAlch[i] = (DownloadedItem.Download_serialized_json_data(url));
+                highAlch[i].price = favoritesArr[i].item.current.price;
             }
 
-            List<_Items> sortedList = prices.OrderBy(p => p.cost).ToList();
-            _Items[] sortedPrice = new _Items[Categories.Potions.Count()];
-            sortedPrice = sortedList.ToArray();
+            List<_Items> sortedList = highAlch.OrderBy(p => p.highalch).ToList();
+            _Items[] sortedHa = new _Items[favorites.Count()];
+            sortedHa = sortedList.ToArray();
             TempData["Username"] = HttpContext.User.Identity.Name;
-            return View("MyFavorites", sortedPrice);
+            if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+            {
+                sortedHa = new _Items[favorites.Count()];
+                sortedHa = sortedList.ToArray();
+                TempData["Sorted"] = "low";
+
+                return View("MyFavorites", sortedHa);
+            }
+            else
+            {
+                sortedList.Reverse();
+                TempData["Sorted"] = "high";
+                sortedHa = new _Items[Categories.Potions.Count()];
+                sortedHa = sortedList.ToArray();
+                return View("MyFavorites", sortedHa);
+            }
         }
 
         public IActionResult NameFilter(int id)
@@ -190,18 +218,34 @@ namespace OSRS_PRICE_WATCH.Controllers
                 url = "https://secure.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item=" + favorites[i].ItemID;
                 favoritesArr[i] = (DownloadedItemOsrsGe.Download_serialized_json_data(url));
             }
-            _Items[] prices = new _Items[favorites.Count()];
+            _Items[] names = new _Items[favorites.Count()];
             for (int i = 0; i < favorites.Count; i++)
             {
                 url = "https://api.osrsbox.com/items?where={ \"name\": \"" + favoritesArr[i].item.name + "\", \"duplicate\": false }";
-                prices[i] = (DownloadedItem.Download_serialized_json_data(url));
+                names[i] = (DownloadedItem.Download_serialized_json_data(url));
+                names[i].price = favoritesArr[i].item.current.price;
             }
 
-            List<_Items> sortedList = prices.OrderBy(p => p.cost).ToList();
-            _Items[] sortedPrice = new _Items[Categories.Potions.Count()];
-            sortedPrice = sortedList.ToArray();
+            List<_Items> sortedList = names.OrderBy(p => p.name).ToList();
+            _Items[] sortedName = new _Items[favorites.Count()];
+            sortedName = sortedList.ToArray();
             TempData["Username"] = HttpContext.User.Identity.Name;
-            return View("MyFavorites", sortedPrice);
+            if (TempData["Sorted"] == null || TempData["Sorted"].Equals("high"))
+            {
+                sortedName = new _Items[favorites.Count()];
+                sortedName = sortedList.ToArray();
+                TempData["Sorted"] = "low";
+
+                return View("MyFavorites", sortedName);
+            }
+            else
+            {
+                sortedList.Reverse();
+                TempData["Sorted"] = "high";
+                sortedName = new _Items[Categories.Potions.Count()];
+                sortedName = sortedList.ToArray();
+                return View("MyFavorites", sortedName);
+            }
         }
     }
 }

@@ -26,7 +26,7 @@
 
                     <div class="card-body">
                         <h4 class="card-title">Filter by:</h4>
-                        <a asp-controller="Favorites" asp-action="PriceFilter" type="button">Price</a><br /><br />
+                        <a asp-controller="Favorites" asp-action="PriceFilter" type="button">Value</a><br /><br />
                         <a asp-action="NameFilter" type="button">Name</a><br /><br />
                         <a asp-action="HAFilter" type="button">High Alch</a>
                     </div>
@@ -37,10 +37,10 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Item Name</th>
-                            <th scope="col">GE Price</th>
                             <th scope="col">Value</th>
                             <th scope="col">High Alch</th>
                             <th scope="col">Low Alch</th>
+                            <th scope="col">GE Price</th>
                             <th scope="col">Wiki Link</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
@@ -51,10 +51,10 @@
                         {
                         <tr>
                             <td>@item.wiki_name</td>
-                            <td>@item.price GP</td>
                             <td>@item.cost.ToString("N0") GP</td>
                             <td>@item.highalch.ToString("N0") GP</td>
                             <td>@item.lowalch.ToString("N0") GP</td>
+                            <td>@item.price GP</td>
                             <td><a class="btn btn-outline-primary" href="@item.wiki_url">Wiki</a></td>
                             <td><a class="btn btn-primary text-white" href="/Items/SingleItem?Name=@item.name">View GE Data</a></td>
                             <td>

@@ -69,7 +69,8 @@
                 {
                 <div class="col-sm-6 col-lg-4">
                     <div class="card clean-card text-center">
-                        <img class="card-img-top w-100 d-block mx-auto" src="@item.item.icon_large" style="max-height:40%; max-width:40%;">
+                        <img class="card-img-top w-100 d-block mx-auto" src="@item.item.icon_large" style="max-height:40%; max-width:40%;"
+                             onError="this.onerror=null;this.src='https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg';">
                         <div class="card-body info">
                             <h4 class="card-title">@item.item.name.ToTitleCase()</h4>
                             <p class="card-text">Price: @item.item.current.price</p>
